@@ -36,21 +36,31 @@ export default function App() {
             Step {step}: {messages[step - 1]}{" "}
           </p>
           <div className="buttons">
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handlePrevious}
+            <Button
+              bgcolor="#7950f2"
+              txtcolor="#fff"
+              onClickEvent={handlePrevious}
             >
-              Previous
-            </button>
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handleNext}
-            >
-              Next
-            </button>
+              <span>👈</span>Previous
+            </Button>
+            <Button bgcolor="#7950f2" txtcolor="#fff" onClickEvent={handleNext}>
+              Next<span>👉</span>
+            </Button>
           </div>
         </div>
       )}
     </>
+  );
+}
+
+function Button({ bgcolor, txtcolor, onClickEvent, children }) {
+  // learning children prop
+  return (
+    <button
+      style={{ backgroundColor: bgcolor, color: txtcolor }}
+      onClick={onClickEvent}
+    >
+      {children}
+    </button>
   );
 }
