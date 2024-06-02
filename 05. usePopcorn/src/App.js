@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+import { startTransition, useState } from "react";
+import PropTypes from "prop-types";
 const tempMovieData = [
   {
     imdbID: "tt1375666",
@@ -80,12 +80,24 @@ export default function App() {
         </Box>
       </Main>
       <StarRating maxR={5} />
-      <StarRating maxR={10} color="red" size="11" />
+      <StarRating maxR={10} color="red" size="11" defaultRating={3} />
     </>
   );
 }
-function StarRating({ maxR = 5, color = "#fcc419", size = 30 }) {
-  const [rating, setRating] = useState(0);
+StarRating.propTypes = {
+  maxR: PropTypes.number,
+  defaultRating: PropTypes.number,
+  color: PropTypes.string,
+  size: PropTypes.number,
+};
+
+function StarRating({
+  maxR = 5,
+  color = "#fcc419",
+  size = 10,
+  defaultRating = 0,
+}) {
+  const [rating, setRating] = useState(defaultRating);
   const [tempRating, settempRating] = useState(0);
 
   const txtStyle = {
