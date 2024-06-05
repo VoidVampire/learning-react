@@ -50,8 +50,17 @@ Rendering can be triggered in two main ways:
   1.  Two elements of different types will produce different trees.
   2.  Elements with a stable key prop stay the same across renders.
 - **Two situations:**
-  1.  Same position, different element.
-  2.  Same position, same element.
+  1.  Same position, different element
+    - basically change in html tag
+    - react assumes entire sub-tree is invalid, old components are destroyed with states, and is rebuild with new states
+  2.  Same position, same element
+    - DOM and react elements remain same with state
+    - only props change
+
+**Key Prop**
+  - special prop which can establish uniqueness
+  - allows react to distinguish b/w multiple instances of same component
+  - if key changes b/w renders, the element is destroed and rebuilt (even if same position)
 
 ### 3. Commit Phase
 
