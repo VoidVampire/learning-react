@@ -74,7 +74,11 @@ export default function App() {
         <Button onClick={handleDeleteF}>Clear all Friends</Button>
       </div>
       {selectedFriend && (
-        <SplitForm selectedFriend={selectedFriend} onSplit={handleSplit} />
+        <SplitForm
+          selectedFriend={selectedFriend}
+          onSplit={handleSplit}
+          key={selectedFriend.id}
+        />
       )}
     </div>
   );
